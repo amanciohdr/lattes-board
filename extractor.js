@@ -72,6 +72,8 @@ function extrairTituloDaEntrada(entrada) {
             if (candidato.length >= 15 && !candidato.match(/^[A-Z]\.\s*[A-Z]\./)) {
                 const numSeparadores = (candidato.match(/;/g) || []).length;
                 if (numSeparadores < 2) {
+                    // Limpeza final: remove revista se ainda estiver grudada
+                    candidato = limparRevistaDoTitulo(candidato);
                     return candidato;
                 }
             }
@@ -116,6 +118,28 @@ function extrairTituloDaEntrada(entrada) {
     return null;
 }
 
+// Função auxiliar para remover revista grudada no final do título
+function limparRevistaDoTitulo(titulo) {
+    if (!titulo) return titulo;
+    
+    // Padrão: "Título. nome da revista, v. X" ou "Título. nome da revista (local), v. X"
+    // A revista geralmente começa com letra minúscula após o ponto
+    const regexRevistaGrudada = /\.\s+[a-z][a-zA-ZÀ-ÿ\s&]+,\s*v\.\s*\d+.*$/i;
+    const match = titulo.match(regexRevistaGrudada);
+    if (match) {
+        return titulo.substring(0, match.index).trim();
+    }
+    
+    // Padrão alternativo: revista em CAPS grudada - ex: "TÍTULO. BRAZILIAN JOURNAL, v. 7"
+    const regexRevistaCaps = /\.\s+[A-Z][A-Z\s&]+,\s*v\.\s*\d+.*$/;
+    const matchCaps = titulo.match(regexRevistaCaps);
+    if (matchCaps) {
+        return titulo.substring(0, matchCaps.index).trim();
+    }
+    
+    return titulo;
+}
+
 // ============================================================
 // Coleta seção de artigos usando REGEX DO USUÁRIO para sessão
 // ============================================================
@@ -143,7 +167,11 @@ function coletarTrechosDeArtigos(texto) {
         'Demais tipos de produção',
         'Produção técnica',
         'Trabalhos em eventos',
-        'Outras produções'
+        'Outras produções',
+        'Organização de eventos',
+        'Inovação',
+        'Eventos',
+        'Orientações'
     ];
     const regexFim = new RegExp(`^\\s*(${fimSecao.join('|')})`, 'im');
 

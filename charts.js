@@ -32,8 +32,8 @@ function criarGraficoArtigos(resultados) {
             datasets: [{
                 label: 'Artigos Publicados',
                 data: artigos,
-                backgroundColor: 'rgba(30, 58, 95, 0.8)',
-                borderColor: 'rgba(30, 58, 95, 1)',
+                backgroundColor: 'rgba(7, 68, 156, 0.8)',
+                borderColor: '#07449c',
                 borderWidth: 1
             }]
         },
@@ -67,14 +67,14 @@ function criarGraficoInstituicoes(resultados) {
             datasets: [{
                 data: Object.values(instituicoes),
                 backgroundColor: [
-                    'rgba(30, 58, 95, 0.9)',
-                    'rgba(43, 92, 143, 0.9)',
-                    'rgba(91, 155, 213, 0.9)',
-                    'rgba(140, 180, 220, 0.9)',
-                    'rgba(180, 205, 235, 0.9)'
+                    'rgba(7, 68, 156, 0.9)',
+                    'rgba(51, 104, 183, 0.9)',
+                    'rgba(74, 140, 205, 0.9)',
+                    'rgba(145, 196, 236, 0.9)',
+                    'rgba(68, 76, 84, 0.9)'
                 ],
                 borderWidth: 2,
-                borderColor: '#fff'
+                borderColor: '#fefefe'
             }]
         },
         options: {
@@ -103,14 +103,14 @@ function criarGraficoNacionalidade(resultados) {
             datasets: [{
                 data: Object.values(nacionalidades),
                 backgroundColor: [
-                    'rgba(30, 58, 95, 0.9)',
-                    'rgba(43, 92, 143, 0.9)',
-                    'rgba(91, 155, 213, 0.9)',
-                    'rgba(74, 74, 74, 0.9)',
-                    'rgba(140, 180, 220, 0.9)'
+                    'rgba(7, 68, 156, 0.9)',
+                    'rgba(51, 104, 183, 0.9)',
+                    'rgba(74, 140, 205, 0.9)',
+                    'rgba(145, 196, 236, 0.9)',
+                    'rgba(68, 76, 84, 0.9)'
                 ],
                 borderWidth: 2,
-                borderColor: '#fff'
+                borderColor: '#fefefe'
             }]
         },
         options: {
@@ -156,11 +156,11 @@ function criarGraficoFormacao(resultados) {
                 label: 'Quantidade de Titulações',
                 data: data,
                 backgroundColor: [
-                    'rgba(30, 58, 95, 0.8)',
-                    'rgba(43, 92, 143, 0.8)',
-                    'rgba(91, 155, 213, 0.8)',
-                    'rgba(140, 180, 220, 0.8)',
-                    'rgba(180, 205, 235, 0.8)'
+                    'rgba(7, 68, 156, 0.8)',
+                    'rgba(8, 69, 156, 0.8)',
+                    'rgba(51, 104, 183, 0.8)',
+                    'rgba(74, 140, 205, 0.8)',
+                    'rgba(145, 196, 236, 0.8)'
                 ],
                 borderWidth: 1
             }]
@@ -206,8 +206,8 @@ function criarGraficoIdiomas(resultados) {
             datasets: [{
                 label: 'Pesquisadores',
                 data: data,
-                backgroundColor: 'rgba(91, 155, 213, 0.8)',
-                borderColor: 'rgba(91, 155, 213, 1)',
+                backgroundColor: 'rgba(74, 140, 205, 0.8)',
+                borderColor: '#4a8ccd',
                 borderWidth: 1
             }]
         },
@@ -243,17 +243,17 @@ function criarGraficoBancas(resultados) {
                 {
                     label: 'Graduação',
                     data: graduacao,
-                    backgroundColor: 'rgba(91, 155, 213, 0.8)'
+                    backgroundColor: 'rgba(145, 196, 236, 0.8)'
                 },
                 {
                     label: 'Mestrado',
                     data: mestrado,
-                    backgroundColor: 'rgba(43, 92, 143, 0.8)'
+                    backgroundColor: 'rgba(51, 104, 183, 0.8)'
                 },
                 {
                     label: 'Doutorado',
                     data: doutorado,
-                    backgroundColor: 'rgba(30, 58, 95, 0.8)'
+                    backgroundColor: 'rgba(7, 68, 156, 0.8)'
                 }
             ]
         },
@@ -295,10 +295,10 @@ function criarNuvemPalavras(resultados) {
         }
     });
     
-    // Paletas de cores baseadas na logo LattesBoard
-    const paletaGrandesAreas = ['#1e3a5f', '#2b5c8f', '#3d7ab5', '#5b9bd5', '#7eb3e0', '#a1cbe8'];
-    const paletaAreas = ['#4a4a4a', '#1e3a5f', '#2b5c8f', '#5b9bd5', '#6a6a6a', '#8a8a8a'];
-    const paletaSubAreas = ['#2b5c8f', '#5b9bd5', '#7eb3e0', '#1e3a5f', '#3d7ab5', '#a1cbe8'];
+    // Paletas de cores baseadas na nova paleta
+    const paletaGrandesAreas = ['#07449c', '#08459c', '#3368b7', '#4a8ccd', '#91c4ec', '#444c54'];
+    const paletaAreas = ['#08459c', '#3368b7', '#4a8ccd', '#91c4ec', '#07449c', '#444c54'];
+    const paletaSubAreas = ['#3368b7', '#4a8ccd', '#91c4ec', '#07449c', '#08459c', '#444c54'];
     
     criarNuvemIndividual('wordCloudGrandesAreas', grandesAreas, paletaGrandesAreas);
     criarNuvemIndividual('wordCloudAreas', areas, paletaAreas);
@@ -450,7 +450,7 @@ function criarRedeColaboracao(resultados) {
             line.setAttribute('y1', sourceNode.y);
             line.setAttribute('x2', targetNode.x);
             line.setAttribute('y2', targetNode.y);
-            line.setAttribute('stroke', '#5b9bd5');
+            line.setAttribute('stroke', '#4a8ccd');
             line.setAttribute('stroke-width', Math.min(edge.weight * 1.5, 5));
             line.setAttribute('stroke-opacity', 0.4);
             svg.appendChild(line);
@@ -470,8 +470,8 @@ function criarRedeColaboracao(resultados) {
         circle.setAttribute('cx', node.x);
         circle.setAttribute('cy', node.y);
         circle.setAttribute('r', radius);
-        circle.setAttribute('fill', '#1e3a5f');
-        circle.setAttribute('stroke', '#fff');
+        circle.setAttribute('fill', '#07449c');
+        circle.setAttribute('stroke', '#fefefe');
         circle.setAttribute('stroke-width', 2);
         
         // Tooltip
